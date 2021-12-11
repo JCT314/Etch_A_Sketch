@@ -8,9 +8,8 @@ for(let i = 0; i < 16*16; i++) {
 
 function onHover(e) {
     const square = e.target.closest('.square');
-    // console.log(square);
     if(!square) return;
-    square.style.backgroundColor = 'green';
+    square.style.backgroundColor = 'black';
 }
 
 container.addEventListener("mouseover", onHover);
