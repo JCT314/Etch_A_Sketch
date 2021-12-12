@@ -17,6 +17,7 @@ function onHover(e) {
 }
 
 function onClick(e) {
+    e.preventDefault();
     const square = e.target.closest('.square');
     if(!square) return;
     square.style.backgroundColor = 'black';
@@ -38,5 +39,5 @@ function onReset(e) {
 generateGrid(16);
 
 container.addEventListener("mouseover", onHover);
-container.addEventListener("mousedown",onClick);
+container.addEventListener("mousedown", onClick);
 resetBtn.addEventListener("click", onReset);
