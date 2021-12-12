@@ -35,10 +35,10 @@ body {
   order: 0;
 }
 
-.current-color {
+.current-color-display {
   height: 60px;
   width: 60px;
-  background-color: blue;
+  border: none;
 }
 
 .menu-btn {
@@ -48,6 +48,11 @@ body {
   border: 1px solid #fff;
   color: #fff;
   border-radius: 10px;
+}
+
+.slider-display {
+  color: #fff;
+  font-weight: bolder;
 }
 
 .slider {
