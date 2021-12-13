@@ -9,10 +9,7 @@ function generateGrid(rows) {
     }
 }
 
-function onHover(e) {
-    const square = e.target.closest('.square');
-    if(!square) return;
-    if(e.buttons !== 1) return;
+function colorSquare(square) {
     if(isColor) {
         square.style.backgroundColor = color;
     }
@@ -23,31 +20,28 @@ function onHover(e) {
         square.style.backgroundColor = `rgb(${r},${g},${b})`;
     }
     if(isEraser) {
-        square.style.backgroundColor = '#fff';
+        square.style.backgroundColor = '#ddd';
     }
+}
+
+function onHover(e) {
+    const square = e.target.closest('.square');
+    if(!square) return;
+    if(e.buttons !== 1) return;
+    colorSquare(square);
 }
 
 function onClick(e) {
     e.preventDefault();
     const square = e.target.closest('.square');
     if(!square) return;
-    if(isColor) {
-        square.style.backgroundColor = color;
-    }
-    if(isRainbow) {
-        const r = Math.floor(Math.random() * 256);
-        const g= Math.floor(Math.random() * 256);
-        const b = Math.floor(Math.random() * 256);
-        square.style.backgroundColor = `rgb(${r},${g},${b})`;
-    }
-    if(isEraser) {
-        square.style.backgroundColor = '#fff';
-    }
+    colorSquare(square);
 }
 
 const gridContainer = document.querySelector(".grid-container");
 const currentColorDisplay = document.querySelector(".current-color-display");
-currentColorDisplay.value = '#000';
+let color = "#000";
+currentColorDisplay.value = color;
 const buttons = document.querySelectorAll('.menu-btn');
 const colorButton = buttons[0];
 const rainbowButton = buttons[1];
@@ -56,7 +50,6 @@ const clearButton = buttons[3];
 const slider = document.querySelector('.slider');
 const sliderDisplay = document.querySelector('.slider-display');
 const menu = document.querySelector('.menu-container');
-let color = "#000";
 let isRainbow = false;
 let isColor = true;
 let isEraser = false;
