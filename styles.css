@@ -50,6 +50,11 @@ body {
   border-radius: 10px;
 }
 
+.menu-btn--active {
+  background-color: #136e13;
+  font-weight: bolder;
+}
+
 .slider-display {
   color: #fff;
   font-weight: bolder;
