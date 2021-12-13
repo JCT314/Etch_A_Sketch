@@ -39,6 +39,11 @@ body {
   height: 60px;
   width: 60px;
   border: none;
+  transition: transform 0.3s;
+}
+
+.current-color-display:hover {
+  transform: scale(1.1);
 }
 
 .menu-btn {
@@ -48,11 +53,24 @@ body {
   border: 1px solid #fff;
   color: #fff;
   border-radius: 10px;
+  transition: transform 0.3s;
 }
 
 .menu-btn--active {
-  background-color: #136e13;
+  background-color: #000;
   font-weight: bolder;
+}
+
+.menu-btn:hover:not(.menu-btn--active) {
+  background-color: #222;
+}
+
+.menu-btn:hover {
+  transform: scale(1.1);
+}
+
+.menu-btn:active:not(.menu-btn--active) {
+  background-color: #111;
 }
 
 .slider-display {
@@ -71,6 +89,7 @@ body {
   background-color: #000;
   border: none;
   height: 30px;
+  cursor: pointer;
 }
 
 .grid-container {

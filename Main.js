@@ -33,7 +33,11 @@ const eraseButton = buttons[2];
 const clearButton = buttons[3];
 const slider = document.querySelector('.slider');
 const sliderDisplay = document.querySelector('.slider-display');
+const menu = document.querySelector('.menu-container');
 let color = "#000";
+let isRainbow = false;
+let isColor = true;
+let isEraser = false;
 
 generateGrid(16);
 
@@ -49,4 +53,29 @@ slider.addEventListener("input", (e) => {
 slider.addEventListener("change", (e) => {
     const value = e.currentTarget.value;
     generateGrid(value);
+});
+menu.addEventListener("click", (e) => {
+    const menuBtn = e.target.closest('.menu-btn');
+    if(!menuBtn) return;
+
+    if(menuBtn !== clearButton) {
+        buttons.forEach(button => {
+            button.classList.remove('menu-btn--active');
+        });
+        menuBtn.classList.add('menu-btn--active');
+    }
+    
+    isRainbow = isEraser = isColor = false;
+    if(menuBtn === rainbowButton) {
+        isRainbow = true;
+    }
+    if(menuBtn === colorButton) {
+        isColor = true;
+    }
+    if(menuBtn === eraseButton) {
+        isEraser = true;
+    }
+    if(menuBtn === clearButton) {
+        generateGrid(slider.value);
+    }
 });
