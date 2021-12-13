@@ -13,14 +13,36 @@ function onHover(e) {
     const square = e.target.closest('.square');
     if(!square) return;
     if(e.buttons !== 1) return;
-    square.style.backgroundColor = color;
+    if(isColor) {
+        square.style.backgroundColor = color;
+    }
+    if(isRainbow) {
+        const r = Math.floor(Math.random() * 256);
+        const g= Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        square.style.backgroundColor = `rgb(${r},${g},${b})`;
+    }
+    if(isEraser) {
+        square.style.backgroundColor = '#fff';
+    }
 }
 
 function onClick(e) {
     e.preventDefault();
     const square = e.target.closest('.square');
     if(!square) return;
-    square.style.backgroundColor = color;
+    if(isColor) {
+        square.style.backgroundColor = color;
+    }
+    if(isRainbow) {
+        const r = Math.floor(Math.random() * 256);
+        const g= Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        square.style.backgroundColor = `rgb(${r},${g},${b})`;
+    }
+    if(isEraser) {
+        square.style.backgroundColor = '#fff';
+    }
 }
 
 const gridContainer = document.querySelector(".grid-container");
