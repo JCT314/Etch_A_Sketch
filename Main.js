@@ -1,3 +1,19 @@
+const gridContainer = document.querySelector(".grid-container");
+const currentColorDisplay = document.querySelector(".current-color-display");
+let color = "#000";
+currentColorDisplay.value = color;
+const buttons = document.querySelectorAll('.menu-btn');
+const colorButton = buttons[0];
+const rainbowButton = buttons[1];
+const eraseButton = buttons[2];
+const clearButton = buttons[3];
+const slider = document.querySelector('.slider');
+const sliderDisplay = document.querySelector('.slider-display');
+const menu = document.querySelector('.menu-container');
+let isRainbow = false;
+let isColor = true;
+let isEraser = false;
+
 function generateGrid(rows) {
     gridContainer.innerHTML = ``;
     gridContainer.style.gridTemplateColumns = `repeat(${rows}, 1fr)`;
@@ -24,52 +40,35 @@ function colorSquare(square) {
     }
 }
 
-function onHover(e) {
+function onMouseOver(e) {
     const square = e.target.closest('.square');
     if(!square) return;
     if(e.buttons !== 1) return;
     colorSquare(square);
 }
 
-function onClick(e) {
+function onMouseDown(e) {
     e.preventDefault();
     const square = e.target.closest('.square');
     if(!square) return;
     colorSquare(square);
 }
 
-const gridContainer = document.querySelector(".grid-container");
-const currentColorDisplay = document.querySelector(".current-color-display");
-let color = "#000";
-currentColorDisplay.value = color;
-const buttons = document.querySelectorAll('.menu-btn');
-const colorButton = buttons[0];
-const rainbowButton = buttons[1];
-const eraseButton = buttons[2];
-const clearButton = buttons[3];
-const slider = document.querySelector('.slider');
-const sliderDisplay = document.querySelector('.slider-display');
-const menu = document.querySelector('.menu-container');
-let isRainbow = false;
-let isColor = true;
-let isEraser = false;
-
-generateGrid(16);
-
-gridContainer.addEventListener("mouseover", onHover);
-gridContainer.addEventListener("mousedown", onClick);
-currentColorDisplay.addEventListener("change",(e) => {
+function onColorDisplayChange(e) {
     color = e.currentTarget.value;
-});
-slider.addEventListener("input", (e) => {
+}
+
+function onInput(e) {
     const value = e.currentTarget.value;
     sliderDisplay.textContent = `${value} x ${value}`;
-});
-slider.addEventListener("change", (e) => {
+}
+
+function onSliderChange(e) {
     const value = e.currentTarget.value;
     generateGrid(value);
-});
-menu.addEventListener("click", (e) => {
+}
+
+function onClick(e) {
     const menuBtn = e.target.closest('.menu-btn');
     if(!menuBtn) return;
 
@@ -91,4 +90,13 @@ menu.addEventListener("click", (e) => {
     } else {
         generateGrid(slider.value);
     }
-});
+}
+
+generateGrid(16);
+
+gridContainer.addEventListener("mouseover", onMouseOver);
+gridContainer.addEventListener("mousedown", onMouseDown);
+currentColorDisplay.addEventListener("change",onColorDisplayChange);
+slider.addEventListener("input", onInput);
+slider.addEventListener("change", onSliderChange);
+menu.addEventListener("click", onClick);
