@@ -78,19 +78,17 @@ menu.addEventListener("click", (e) => {
             button.classList.remove('menu-btn--active');
         });
         menuBtn.classList.add('menu-btn--active');
-    }
-    
-    isRainbow = isEraser = isColor = false;
-    if(menuBtn === rainbowButton) {
-        isRainbow = true;
-    }
-    if(menuBtn === colorButton) {
-        isColor = true;
-    }
-    if(menuBtn === eraseButton) {
-        isEraser = true;
-    }
-    if(menuBtn === clearButton) {
+        isRainbow = isEraser = isColor = false;
+        if(menuBtn === rainbowButton) {
+            isRainbow = true;
+        }
+        if(menuBtn === colorButton) {
+            isColor = true;
+        }
+        if(menuBtn === eraseButton) {
+            isEraser = true;
+        }
+    } else {
         generateGrid(slider.value);
     }
 });
